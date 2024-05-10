@@ -1,35 +1,43 @@
 import math
 def roots(a, b, c):
-    discriminante = float(b**2 - 4 * a * c)
-    if discriminante < 0:
-        return "( )"
-    elif discriminante == 0:
-        raiz = (math.sqrt(discriminante))
-        raiz_1 = float((-b + raiz) / (2 * a))
-        return raiz_1
+    x = b**2 - 4 * a * c
+    if x < 0:
+        return"( )"
     else:
-        raiz = (math.sqrt(discriminante))
-        raiz_2 = float((-b - raiz) / (2 * a))
-        raiz_1 = float((-b + raiz) / (2 * a))
-        return (raiz_1, raiz_2)
-
-print(roots(4, 35, 4))
-
+        sr1 = -b + math.sqrt(x)
+        sr2 = -b - math.sqrt(x)
+        r1 = sr1 /(2 * a) 
+        r2 = sr2 /(2 * a)
+        if r1 == r2:
+            return f"({r1})"
+        elif r1 != r2:
+            return f"({r1}, {r2})"
+        else:
+            return "( )"
 
 def value_y(a, b, c, x):
-    y = a*x**2 + b*x + c
+    y = a * x**2 + b * x + c
     return y
 
-print(value_y(1, -3, 2, -1))
 
 def to_string(a, b, c):
-    print(f"f(x) = {a} * X^2 + {b} * X + {c}")
+    if a != 0 and b != 0:
+        return f"f(x) = {a} * X^2 + {b} * X + {c}"
+    elif a == 0 and b != 0:
+        return f"f(x) = {b} * X + {c}"
+    elif a == 0 and b == 0:
+        return f"f(x) = {c}"
+    elif a != 0 and b == 0:
+        return f"f(x) = {a} * X^2 + {c}"
 
-to_string(2, -3, 1)
 
 def derivation(a, b, c):
-    f"f(x) = {a} * X^2 + {b} * X + {c}"
-    d = 2*a
-    print(f"f'(x) = {d}x + {b}")
-
-derivation(2, -3, 1)
+    a= a ** 2
+    if a != 0 and b != 0:
+        return f"f'(x) = {a} * X + {b}"
+    elif a == 0 and b != 0:
+        return f"f'(x) = {b}"
+    elif a != 0 and b == 0:
+        return f"f'(x) = {a} * X"
+    else: 
+        return "f'(x) = 0"
